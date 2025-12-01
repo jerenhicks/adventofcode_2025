@@ -1,0 +1,57 @@
+# .NET build results
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# VS Code settings
+.vscode/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Rider
+.idea/
+*.sln.iml
+
+# Dotnet tool restore
+.dotnet_tool/
+
+# Logs
+*.log
+
+# Test results
+TestResults/
+
+# NCrunch
+.ncrunch*
+*crunch*.local.xml
+
+# Visual Studio Code settings
+.history/
+
+# Others
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# NuGet
+*.nupkg
+# The packages folder can be ignored because of Package Restore
+**/packages/*
+!**/packages/build/
+!**/packages/repositories.config
+
+# Backup & local history
+*.bak
+*.backup
+*.swp
+*.tmp
+
+# Local environment
+.env
