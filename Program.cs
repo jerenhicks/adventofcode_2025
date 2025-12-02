@@ -1,21 +1,27 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Runtime.ConstrainedExecution;
 
-namespace MyDotNetConsoleApp
-{
+
+
+
     class Program
     {
-        private static string dataFilePath = @"data-files/day1/star1/testdata/data.txt";
-        private static string filePath = @"data-files/day1/star1/data.txt";
         static void Main(string[] args)
         {
-            //Day1 day1 = new Day1();
-            Day2b day2 = new Day2b();
+            List<Day> days = new List<Day>();
+            days.Add(new Day1());
+            days.Add(new Day2());
+            days.Add(new Day2b());
+            foreach (var day in days)
+            {
+                Console.WriteLine($"--- {day.GetIdentifier()} ---");
+                day.Execute();
+                Console.WriteLine(day.GetResult());
+                Console.WriteLine($"Elapsed Time: {day.GetElapsedTime()} ms");
+                Console.WriteLine();
+            }
         }
 
     }
 
 
-}

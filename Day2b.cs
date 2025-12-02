@@ -1,16 +1,59 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Diagnostics;
 
 
-public class Day2b
+public class Day2b : Day
 {
     private static string dataFilePath = @"data-files/day2/star1/data.txt";
+        private double sumOfInvalidIDs = 0.0;
+    private static string DayIdentifier = "Day2b";
+    private double elapsedMilliseconds = 0.0;
 
     public Day2b()
     {
+
+    }
+
+    public override double GetElapsedTime()
+    {
+        return elapsedMilliseconds;
+    }
+
+    public override string GetIdentifier()
+    {
+        return DayIdentifier;
+    }
+
+    public override string GetResult()
+    {
+        return $"Sum of Invalid Product IDs: {sumOfInvalidIDs}";
+    }
+
+    public List<ProductID> ReadValues(string filePath)
+    {
+        var list = new List<ProductID>();
+        foreach (var line in System.IO.File.ReadLines(filePath))
+        {
+            foreach (var part in line.Split(','))
+            {
+                var ids = part.Split('-');
+                if (ids.Length != 2) continue;
+                if (double.TryParse(ids[0], out double firstID) && double.TryParse(ids[1], out double secondID))
+                {
+                    list.Add(new ProductID { FirstID = firstID, SecondID = secondID });
+                }
+            }
+        }
+        return list;
+    }
+
+    public override void Execute()
+    {
+        long startTime = Stopwatch.GetTimestamp();
         List<ProductID> productIDs = ReadValues(dataFilePath);
-        double sumOfInvalidIDs = 0;
+        sumOfInvalidIDs = 0;
         foreach (var pid in productIDs)
         {
             for (double i = pid.FirstID; i <= pid.SecondID; i++)
@@ -42,26 +85,7 @@ public class Day2b
                 }
             }
         }
-        Console.WriteLine($"Sum of Invalid Product IDs: {sumOfInvalidIDs}");
+                long endTime = Stopwatch.GetTimestamp();
+        elapsedMilliseconds = (endTime - startTime) * 1000.0 / Stopwatch.Frequency;
     }
-
-    public List<ProductID> ReadValues(string filePath)
-    {
-        var list = new List<ProductID>();
-        foreach (var line in System.IO.File.ReadLines(filePath))
-        {
-            foreach (var part in line.Split(','))
-            {
-                var ids = part.Split('-');
-                if (ids.Length != 2) continue;
-                if (double.TryParse(ids[0], out double firstID) && double.TryParse(ids[1], out double secondID))
-                {
-                    list.Add(new ProductID { FirstID = firstID, SecondID = secondID });
-                }
-            }
-        }
-        return list;
-    }
-
-
 }

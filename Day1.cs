@@ -1,26 +1,17 @@
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Runtime.ConstrainedExecution;
 
-public class Day1
+public class Day1 : Day
 {
 
     private static string dataFilePath = @"data-files/day1/star1/testdata/data.txt";
     private static string filePath = @"data-files/day1/star1/data.txt";
+
+    private int finalValue = 0;
+    private double elapsedMilliseconds = 0.0;
     public Day1()
     {
-        Console.WriteLine("Hello, World!");
 
-        var combinations = ReadDialCombinations(filePath);
-        foreach (var combo in combinations)
-        {
-            Console.WriteLine($"{combo.Direction} {combo.Position}");
-        }
-
-        Console.WriteLine("Processing Code...");
-        int value = ProcessCode(50, 99, combinations);
-        Console.WriteLine($"Final Value: {value}");
     }
 
 
@@ -83,5 +74,38 @@ public class Day1
         }
 
         return returnValue;
+    }
+
+    public override string GetResult()
+    {
+        return finalValue.ToString();
+    }
+
+    public override double GetElapsedTime()
+    {
+        return elapsedMilliseconds;
+    }
+
+    public override string GetIdentifier()
+    {
+        return "Day 1b";
+    }
+
+    public override void Execute()
+    {
+                //Console.WriteLine("Hello, World!");
+        long startTime = Stopwatch.GetTimestamp();
+
+        var combinations = ReadDialCombinations(filePath);
+        // foreach (var combo in combinations)
+        // {
+        //     Console.WriteLine($"{combo.Direction} {combo.Position}");
+        // }
+
+        //Console.WriteLine("Processing Code...");
+        finalValue = ProcessCode(50, 99, combinations);
+        long endTime = Stopwatch.GetTimestamp();
+        elapsedMilliseconds = (endTime - startTime) * 1000.0 / Stopwatch.Frequency;
+        //Console.WriteLine($"Final Value: {value}");
     }
 }
