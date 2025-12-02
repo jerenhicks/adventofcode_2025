@@ -9,7 +9,7 @@ public class Day2b
 
     public Day2b()
     {
-        List<ProductID> productIDs = ReadDialCombinations(dataFilePath);
+        List<ProductID> productIDs = ReadValues(dataFilePath);
         double sumOfInvalidIDs = 0;
         foreach (var pid in productIDs)
         {
@@ -45,7 +45,7 @@ public class Day2b
         Console.WriteLine($"Sum of Invalid Product IDs: {sumOfInvalidIDs}");
     }
 
-    public List<ProductID> ReadDialCombinations(string filePath)
+    public List<ProductID> ReadValues(string filePath)
     {
         var list = new List<ProductID>();
         foreach (var line in System.IO.File.ReadLines(filePath))
