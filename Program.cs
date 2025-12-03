@@ -12,6 +12,8 @@ using System.Collections.Generic;
             days.Add(new Day1());
             days.Add(new Day2());
             days.Add(new Day2b());
+            days.Add(new Day3a());
+            days.Add(new Day3b());
             foreach (var day in days)
             {
                 Console.WriteLine($"--- {day.GetIdentifier()} ---");
