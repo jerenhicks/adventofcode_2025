@@ -28,7 +28,7 @@ public class Day4b : Day
 
     public override string GetResult()
     {
-        return $"Sum of Values: {sumofValues}";
+        return $"{sumofValues}";
     }
 
     private void ReadValues(string filePath)
@@ -91,7 +91,11 @@ public class Day4b : Day
         } while (floorsToRemove.Count > 0);
 
         long endTime = Stopwatch.GetTimestamp();
-
         elapsedMilliseconds = (endTime - startTime) * 1000.0 / Stopwatch.Frequency;
+    }
+
+    public override string Checksum()
+    {
+        return "8538";
     }
 }

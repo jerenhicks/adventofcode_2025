@@ -13,7 +13,7 @@ public class Day3b : Day
 
     public Day3b()
     {
-        
+
     }
 
     public override double GetElapsedTime()
@@ -28,7 +28,7 @@ public class Day3b : Day
 
     public override string GetResult()
     {
-        return $"Sum of Values: {sumofValues}";
+        return $"{sumofValues}";
     }
 
     private void ReadValues(string filePath)
@@ -62,8 +62,12 @@ public class Day3b : Day
             bank.calculateLargestCapacity();
             sumofValues += bank.largestCapacity;
         }
-                long endTime = Stopwatch.GetTimestamp();
-
+        long endTime = Stopwatch.GetTimestamp();
         elapsedMilliseconds = (endTime - startTime) * 1000.0 / Stopwatch.Frequency;
+    }
+
+    public override string Checksum()
+    {
+        return "173577199527257";
     }
 }

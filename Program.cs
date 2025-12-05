@@ -14,14 +14,17 @@ class Program
         days.Add(new Day2b());
         days.Add(new Day3a());
         days.Add(new Day3b());
-        days.Add(new Day4a());
-        days.Add(new Day4b());
+        //days.Add(new Day4a());
+        //days.Add(new Day4b());
+        days.Add(new Day5a());
+        days.Add(new Day5b());
         foreach (var day in days)
         {
             Console.WriteLine($"--- {day.GetIdentifier()} ---");
             day.Execute();
-            Console.WriteLine(day.GetResult());
+            Console.WriteLine("Result: " + day.GetResult());
             Console.WriteLine($"Elapsed Time: {day.GetElapsedTime()} ms");
+            Console.WriteLine("Checksum matches? " + (day.Checksum() == day.GetResult().ToString()));
             Console.WriteLine();
         }
     }

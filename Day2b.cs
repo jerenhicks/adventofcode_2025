@@ -7,7 +7,7 @@ using System.Diagnostics;
 public class Day2b : Day
 {
     private static string dataFilePath = @"data-files/day2/star1/data.txt";
-        private double sumOfInvalidIDs = 0.0;
+    private double sumOfInvalidIDs = 0.0;
     private static string DayIdentifier = "Day2b";
     private double elapsedMilliseconds = 0.0;
 
@@ -28,7 +28,7 @@ public class Day2b : Day
 
     public override string GetResult()
     {
-        return $"Sum of Invalid Product IDs: {sumOfInvalidIDs}";
+        return $"{sumOfInvalidIDs}";
     }
 
     public List<ProductID> ReadValues(string filePath)
@@ -85,7 +85,12 @@ public class Day2b : Day
                 }
             }
         }
-                long endTime = Stopwatch.GetTimestamp();
+        long endTime = Stopwatch.GetTimestamp();
         elapsedMilliseconds = (endTime - startTime) * 1000.0 / Stopwatch.Frequency;
+    }
+
+    public override string Checksum()
+    {
+        return "26202168557";
     }
 }

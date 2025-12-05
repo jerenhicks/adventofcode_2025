@@ -26,7 +26,7 @@ public class Day2 : Day
 
     public override string GetResult()
     {
-        return $"Sum of Invalid Product IDs: {sumOfInvalidIDs}";
+        return $"{sumOfInvalidIDs}";
     }
 
     public List<ProductID> ReadValues(string filePath)
@@ -49,7 +49,7 @@ public class Day2 : Day
 
     public override void Execute()
     {
-                long startTime = Stopwatch.GetTimestamp();
+        long startTime = Stopwatch.GetTimestamp();
         List<ProductID> productIDs = ReadValues(dataFilePath);
         foreach (var pid in productIDs)
         {
@@ -74,5 +74,10 @@ public class Day2 : Day
         long endTime = Stopwatch.GetTimestamp();
         elapsedMilliseconds = (endTime - startTime) * 1000.0 / Stopwatch.Frequency;
         //Console.WriteLine($"Sum of Invalid Product IDs: {sumOfInvalidIDs}");
+    }
+
+    public override string Checksum()
+    {
+        return "18893502033";
     }
 }

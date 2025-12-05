@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
@@ -93,7 +94,7 @@ public class Day1 : Day
 
     public override void Execute()
     {
-                //Console.WriteLine("Hello, World!");
+        //Console.WriteLine("Hello, World!");
         long startTime = Stopwatch.GetTimestamp();
 
         var combinations = ReadDialCombinations(filePath);
@@ -107,5 +108,10 @@ public class Day1 : Day
         long endTime = Stopwatch.GetTimestamp();
         elapsedMilliseconds = (endTime - startTime) * 1000.0 / Stopwatch.Frequency;
         //Console.WriteLine($"Final Value: {value}");
+    }
+
+    public override string Checksum()
+    {
+        return "7199";
     }
 }

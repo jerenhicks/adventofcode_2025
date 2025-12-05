@@ -6,4 +6,6 @@ public abstract class Day
     public abstract double GetElapsedTime();
     public abstract string GetIdentifier();
     public abstract void Execute();
+
+    public abstract string Checksum();
 }
