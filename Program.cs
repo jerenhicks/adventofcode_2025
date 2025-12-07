@@ -20,6 +20,8 @@ class Program
         days.Add(new Day5b());
         days.Add(new Day6a());
         days.Add(new Day6b());
+        days.Add(new Day7a());
+        days.Add(new Day7b());
         foreach (var day in days)
         {
             Console.WriteLine($"--- {day.GetIdentifier()} ---");
