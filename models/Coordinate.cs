@@ -22,4 +22,9 @@ public class Coordinate
         return Math.Sqrt(Math.Pow(b.X - a.X, 2) + Math.Pow(b.Y - a.Y, 2) + Math.Pow(b.Z - a.Z, 2));
     }
 
+    public override string ToString()
+    {
+        return $"({X}, {Y}, {Z})";
+    }
+
 }

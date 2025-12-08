@@ -4,15 +4,15 @@ using System.Linq;
 using System.Diagnostics;
 using System.Dynamic;
 
-public class Day8a : Day
+public class Day8b : Day
 {
-    private static string dataFilePath = @"data-files/day8/star1/data.txt";
+    private static string dataFilePath = @"data-files/day8/star2/data.txt";
     private double sumofValues = 0.0;
-    private static string DayIdentifier = "Day8a";
+    private static string DayIdentifier = "Day8b";
     private double elapsedMilliseconds = 0.0;
     List<Coordinate> junctionBoxes = new List<Coordinate>();
 
-    public Day8a()
+    public Day8b()
     {
 
     }
@@ -84,6 +84,7 @@ public class Day8a : Day
 
         List<Circuit> lumpedIntoCircuits = new List<Circuit>();
 
+        var foundCircuit = false;
         while (topValues.Count > 0)
         {
             Circuit circuit1 = new Circuit();
@@ -100,11 +101,23 @@ public class Day8a : Day
                     if (circuit1.OverlapsWith(pair))
                     {
                         circuit1.AddPair(pair);
+                        if (circuit1.UniqueCoordinates.Count == junctionBoxes.Count)
+                        {
+                            //all junction boxes are connected, we can stop lumping
+                            sumofValues = pair.Item1.X * pair.Item2.X;
+                            continueLumping = false;
+                            foundCircuit = true;
+                            break;
+                        }
                         topValues.Remove(pair);
                         continueLumping = true;
                     }
                 }
             } while (continueLumping);
+            if (foundCircuit)
+            {
+                break;
+            }
         }
 
 
@@ -168,13 +181,13 @@ public class Day8a : Day
         // } while (mergingHappened);
 
         //go through and print out the circuits, only showing the unique values on each
-        sumofValues = 1;
-        var topScores = lumpedIntoCircuits.Select(circuit => circuit.UniqueCoordinates.Count)
-                        .OrderByDescending(s => s).Take(3);
-        foreach (var score in topScores)
-        {
-            sumofValues *= score;
-        }
+        // sumofValues = 1;
+        // var topScores = lumpedIntoCircuits.Select(circuit => circuit.UniqueCoordinates.Count)
+        //                 .OrderByDescending(s => s).Take(3);
+        // foreach (var score in topScores)
+        // {
+        //     sumofValues *= score;
+        // }
 
         //Console.WriteLine($"Last two connected coordinates: {cord1.ToString()} and {cord2.ToString()}");
 
