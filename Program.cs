@@ -23,7 +23,8 @@ class Program
         days.Add(new Day7a());
         days.Add(new Day7b());
         days.Add(new Day8a());
-        days.Add(new Day8b());
+        //days.Add(new Day8b());
+        days.Add(new Day9a());
         foreach (var day in days)
         {
             Console.WriteLine($"--- {day.GetIdentifier()} ---");
