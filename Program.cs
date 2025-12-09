@@ -25,6 +25,7 @@ class Program
         days.Add(new Day8a());
         //days.Add(new Day8b());
         days.Add(new Day9a());
+        days.Add(new Day9b());
         foreach (var day in days)
         {
             Console.WriteLine($"--- {day.GetIdentifier()} ---");
