@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Diagnostics;
 using System.Dynamic;
+using System.Runtime.CompilerServices;
 
 public class Day8b : Day
 {
@@ -79,13 +80,13 @@ public class Day8b : Day
         var amountToPick = 1000;
         var topValues = coordinatesScores.OrderBy(kvp => kvp.Key)
                         .Select(kvp => kvp.Value)
-                        .Take(amountToPick)
+                        //.Take(amountToPick)
                         .ToList();
 
         List<Circuit> lumpedIntoCircuits = new List<Circuit>();
 
-        var foundCircuit = false;
-        while (topValues.Count > 0)
+        Boolean exitLoop = false;
+        while (topValues.Count > 0 && !exitLoop)
         {
             Circuit circuit1 = new Circuit();
             circuit1.AddPair(topValues[0]);
@@ -101,24 +102,42 @@ public class Day8b : Day
                     if (circuit1.OverlapsWith(pair))
                     {
                         circuit1.AddPair(pair);
+                        topValues.Remove(pair);
                         if (circuit1.UniqueCoordinates.Count == junctionBoxes.Count)
                         {
                             //all junction boxes are connected, we can stop lumping
-                            sumofValues = pair.Item1.X * pair.Item2.X;
                             continueLumping = false;
-                            foundCircuit = true;
+                            sumofValues = pair.Item1.X * pair.Item2.X;
+                            exitLoop = true;
                             break;
                         }
-                        topValues.Remove(pair);
                         continueLumping = true;
+                        break;
                     }
                 }
             } while (continueLumping);
-            if (foundCircuit)
-            {
-                break;
-            }
         }
+
+
+        // Coordinate firstCaptured = null;
+        // Coordinate secondCaptured = null;
+        // List<Coordinate> copiedValues = junctionBoxes;
+        // foreach (var something in topValues)
+        // {
+        //     if (copiedValues.Contains(something.Item1))
+        //     {
+        //         copiedValues.Remove(something.Item1);
+        //     }
+        //     if (copiedValues.Contains(something.Item2))
+        //     {
+        //         copiedValues.Remove(something.Item2);
+        //     }
+        //     if (copiedValues.Count == 0)
+        //     {
+        //         sumofValues
+        //         break;
+        //     }
+        // }
 
 
         // foreach (var pair in topValues)
